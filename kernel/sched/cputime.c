@@ -60,7 +60,7 @@ void irqtime_account_irq(struct task_struct *curr)
 
 	cpu = smp_processor_id();
 	wallclock = sched_clock_cpu(cpu);
-	delta = wallclock - __this_cpu_read(irq_start_time);
+	delta = sched_clock_cpu(cpu) - __this_cpu_read(irq_start_time);
 	__this_cpu_add(irq_start_time, delta);
 
 	irq_time_write_begin();
@@ -78,12 +78,6 @@ void irqtime_account_irq(struct task_struct *curr)
 		account = false;
 
 	irq_time_write_end();
-
-	if (account)
-		sched_account_irqtime(cpu, curr, delta, wallclock);
-	else if (curr != this_cpu_ksoftirqd())
-		sched_account_irqstart(cpu, curr, wallclock);
-
 	local_irq_restore(flags);
 }
 EXPORT_SYMBOL_GPL(irqtime_account_irq);
