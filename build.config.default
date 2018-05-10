@@ -1,0 +1,3 @@
+export ARCH=arm64
+export DEFCONFIG="msm-perf_defconfig"
+export CROSS_COMPILE="ccache $HOME/kernel/toolchains/gcc-aosp-4.9/bin/aarch64-linux-android-"
