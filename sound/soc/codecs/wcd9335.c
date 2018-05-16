@@ -26,6 +26,9 @@
 #include <linux/mfd/wcd9335/registers.h>
 #include <linux/mfd/wcd9xxx/pdata.h>
 #include <linux/regulator/consumer.h>
+#include <linux/proc_fs.h>
+#include <../drivers/base/regmap/internal.h>
+#include <linux/switch.h>
 #include <linux/clk.h>
 #include <linux/delay.h>
 #include <linux/pm_runtime.h>
@@ -95,6 +98,8 @@
 
 #define SLIM_BW_CLK_GEAR_9 6200000
 #define SLIM_BW_UNVOTE 0
+
+#define AUDIO_DEBUG_GPIO 25
 
 #define CPE_FLL_CLK_75MHZ 75000000
 #define CPE_FLL_CLK_150MHZ 150000000
@@ -14023,6 +14028,10 @@ static struct snd_soc_codec_driver soc_codec_dev_tasha = {
 	.num_dapm_routes = ARRAY_SIZE(audio_map),
 	.get_regmap = tasha_get_regmap,
 };
+
+struct tasha_priv *g_tasha;
+struct switch_dev *g_audiowizard_force_preset_sdev = NULL;
+struct snd_soc_codec *registered_codec;
 
 #ifdef CONFIG_PM
 static int tasha_suspend(struct device *dev)
