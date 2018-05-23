@@ -58,6 +58,8 @@
 #define WCD_MBHC_SPL_HS_CNT  2
 
 int g_jack_det_invert = 0;
+uint32_t g_ZL = 0;
+uint32_t g_ZR = 0;
 
 static int det_extn_cable_en;
 module_param(det_extn_cable_en, int,
