@@ -20,7 +20,7 @@
 #include <linux/msm_audio_ion.h>
 #include <linux/switch.h>
 #include <sound/soc.h>
-#include "../../codecs/wcd9330.h"
+#include "../../codecs/wcd9335.h"
 #include "../../codecs/wcd-mbhc-v2.h"
 #include <../sound/soc/codecs/wcd-mbhc-v2.h>
 #include <sound/audio_calibration.h>
