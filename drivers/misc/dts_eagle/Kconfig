@@ -1,5 +1,5 @@
 config DTS_EAGLE
-	tristate "DTS Eagle driver"
+	bool "DTS Eagle driver"
 	depends on SND_SOC_MSM8X16_WCD
 	default n
 	help
