@@ -433,6 +433,10 @@ struct wcd_mbhc {
     bool jackAlreadReport;
 	unsigned long intr_status;
 };
+
+extern uint32_t g_ZL;
+extern uint32_t g_ZR;
+
 #define WCD_MBHC_CAL_SIZE(buttons, rload) ( \
 	sizeof(struct wcd_mbhc_general_cfg) + \
 	sizeof(struct wcd_mbhc_plug_detect_cfg) + \
@@ -486,6 +490,8 @@ struct wcd_mbhc {
 	(sizeof(cfg_ptr->_rload[0]) + sizeof(cfg_ptr->_alpha[0]))))
 
 #ifdef CONFIG_SND_SOC_WCD_MBHC
+void wcd_mbhc_plug_detect_for_debug_mode(struct wcd_mbhc *mbhc, int debug_mode);
+
 int wcd_mbhc_set_keycode(struct wcd_mbhc *mbhc);
 int wcd_mbhc_start(struct wcd_mbhc *mbhc,
 		       struct wcd_mbhc_config *mbhc_cfg);
